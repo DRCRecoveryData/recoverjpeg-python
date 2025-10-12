@@ -2,9 +2,28 @@ Installation
 ------------
 To install recoverjpeg, run
 
-    ./configure
-    make
-    sudo make install
+```
+# 1. Install GNU Autotools (Autoconf, Automake, Libtool) if they are not already installed
+# This is necessary because files like 'configure.ac' and 'Makefile.am' require
+# these tools to generate the './configure' script.
+sudo apt update
+sudo apt install autoconf automake libtool-bin
+
+# 2. Generate the missing 'configure' script using Autoreconf
+autoreconf -i
+
+# 3. Configure the build environment to create the Makefile
+./configure
+
+# 4. Install the 'pandoc' dependency, which was required for building the documentation (man pages)
+sudo apt install pandoc
+
+# 5. Compile the entire software package
+make
+
+# 6. Install the compiled programs and documentation to system directories (e.g., /usr/local/bin)
+sudo make install
+```
 
 To use sort-pictures, you need to install:
 
